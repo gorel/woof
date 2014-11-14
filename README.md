@@ -1,5 +1,24 @@
-Woof
-====
+# Woof
 
-ExactTarget Hackathon project inspired by "The Office"
+## What is Woof?
+Woof is the next revolution in social networking and communication.  It is being created for the ExactTarget Hackathon and was inspired by The Office.
+
+## Desired Support
+### Messaging
+- [ ] Send text msg
+- [ ] Email them
+- [ ] Tweet @them
+- [ ] Reddit PM
+- [ ] GroupMe message
+- [ ] Send from woof@cs account?
+- [ ] Use Fax API
+
+### Quality of life
+- [ ] Bark on send
+- [ ] Contact list
+
+### Security
+- [x] That's the user's problem
+
+## References
 http://www.youtube.com/watch?v=8wfG8ngFvPk
