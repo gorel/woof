@@ -5,9 +5,9 @@ Woof is the next revolution in social networking and communication.  It is being
 
 ## Desired Support
 ### Messaging
-- [ ] Send text msg
-- [ ] Email them
-- [ ] Tweet @them
+- [x] Send text msg
+- [x] Email them
+- [x] Tweet @them
 - [ ] Reddit PM
 - [ ] GroupMe message
 - [ ] Send from woof@cs account?

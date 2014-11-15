@@ -42,6 +42,7 @@ public class CreateContactFragment extends Fragment {
 	private EditText twitterHandleField;
 	private EditText redditUsernameField;
 	private Button submitButton;
+	private Button loadContactButton;
 
 	//Database stuff
 	private SQLiteDatabase db;
@@ -70,9 +71,6 @@ public class CreateContactFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_create_contact, container, false);
     	getUIElements();
     	setActionListeners();
-    	
-    	//Get the selected contact
-        selectContact();
         
         return rootView;
     }
@@ -93,6 +91,7 @@ public class CreateContactFragment extends Fragment {
     	 twitterHandleField = (EditText) rootView.findViewById(R.id.twitter_handle_edittext);
     	 redditUsernameField = (EditText) rootView.findViewById(R.id.reddit_username_edittext);
     	 submitButton = (Button) rootView.findViewById(R.id.submit_contact_button);
+    	 loadContactButton = (Button) rootView.findViewById(R.id.load_contact_button);
      }
      
      private void setActionListeners() {
@@ -102,6 +101,14 @@ public class CreateContactFragment extends Fragment {
 		        //Fill in the contact information
 		        setContactInformation();
 		    	getFragmentManager().popBackStack();
+			}
+		});
+    	 
+    	 loadContactButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+		    	//Get the selected contact
+		        selectContact();
 			}
 		});
      }
@@ -123,21 +130,24 @@ public class CreateContactFragment extends Fragment {
  				SQLiteDatabase.CREATE_IF_NECESSARY,
  				null);
  		final String deleteOldEntryIfExists = "DELETE FROM " + WOOF_TABLE_NAME +
- 				" WHERE name LIKE '" + contact.getName() + "'" +
- 				" AND sms_number LIKE '" + contact.getSmsNumber() + "'";
- 		final String insertIntoTable = "INSERT INTO " + WOOF_TABLE_NAME +
- 				" ('name', 'sms_number', 'email', 'twitter_handle', 'reddit_username') " +
- 				"VALUES ('" +
- 				contact.getName() + "', '" +
- 				contact.getSmsNumber() + "', '" +
- 				contact.getEmail() + "', '" +
- 				contact.getTwitterHandle() + "', '" +
- 				contact.getRedditUsername() + "');";
+ 				" WHERE name LIKE '" + contact.getName() + "'";
+ 		if (contact.getName().length() > 0) {
+	 		final String insertIntoTable = "INSERT INTO " + WOOF_TABLE_NAME +
+	 				" ('name', 'sms_number', 'email', 'twitter_handle', 'reddit_username') " +
+	 				"VALUES ('" +
+	 				contact.getName() + "', '" +
+	 				contact.getSmsNumber() + "', '" +
+	 				contact.getEmail() + "', '" +
+	 				contact.getTwitterHandle() + "', '" +
+	 				contact.getRedditUsername() + "');";
+	 		
+	 		db.execSQL(createTableMaybe);
+	 		db.execSQL(deleteOldEntryIfExists);
+	 		db.execSQL(insertIntoTable);
+	 		Log.i("Database", "Added " + contact.getName() + " to the database");
+ 		}
  		
- 		db.execSQL(createTableMaybe);
- 		db.execSQL(deleteOldEntryIfExists);
- 		db.execSQL(insertIntoTable);
- 		Log.i("Database", "Added " + contact.getName() + " to the database");
+ 		db.close();
  	}
  	
  	private void readContact() { 		
@@ -148,8 +158,7 @@ public class CreateContactFragment extends Fragment {
  		db.execSQL(createTableMaybe);
  		Cursor cursor = db.rawQuery(
  				"SELECT * FROM " + WOOF_TABLE_NAME +
- 				" WHERE name LIKE '" + contactName +
- 				"' and sms_number LIKE '" + smsNumber + "'",
+ 				" WHERE name LIKE '%" + contactName + "%'",
  				null);
 		nameField.setText(contactName);
 		smsNumberField.setText(smsNumber);

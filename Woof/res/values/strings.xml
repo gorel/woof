@@ -22,4 +22,9 @@
     <string name="twitter_handle_label">Twitter Handle</string>
     <string name="reddit_username_label">Reddit Username</string>
     <string name="submit_string">Submit</string>
+    <string name="load_contact_string">Load Contact</string>
+    <string name="choose_woof_string">Choose your Woof</string>
+    <string name="woof_button_one_string">Woof 1</string>
+    <string name="woof_button_two_string">Woof 2</string>
+    <string name="woof_button_three_string">Woof 3</string>
 </resources>

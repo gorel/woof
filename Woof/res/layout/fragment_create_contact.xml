@@ -97,13 +97,33 @@
         android:inputType="textEmailAddress" >
     </EditText>
     
-    <Button
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal"
+    android:background="@color/dark_gray" >
+    
+        <Button
+        android:id="@+id/load_contact_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/pokemon_gold"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/load_contact_string" />
+        
+        <Button
         android:id="@+id/submit_contact_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/pokemon_gold"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/submit_string" />
-    
+    </LinearLayout>    
 </LinearLayout>
