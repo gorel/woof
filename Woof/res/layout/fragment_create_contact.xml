@@ -1,0 +1,110 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/dark_gray"
+    tools:context="edu.purdue.cs.woof.CreateContactFragment" >
+    
+    <TextView
+        android:id="@+id/name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/name_label"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/name_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+		android:paddingStart="120dp"
+		android:paddingEnd="120dp"
+        android:inputType="textPersonName" >
+    </EditText>
+    
+    <TextView
+        android:id="@+id/sms_number_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/sms_number_label"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/sms_number_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+		android:paddingStart="120dp"
+		android:paddingEnd="120dp"
+        android:inputType="phone" >
+    </EditText>
+    
+    <TextView
+        android:id="@+id/email_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/email_label"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/email_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+		android:paddingStart="120dp"
+		android:paddingEnd="120dp"
+        android:inputType="textEmailAddress" >
+    </EditText>
+    
+    <TextView
+        android:id="@+id/twitter_handle_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/twitter_handle_label"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/twitter_handle_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+		android:paddingStart="120dp"
+		android:paddingEnd="120dp"
+        android:inputType="textEmailAddress" >
+    </EditText>
+    
+    <TextView
+        android:id="@+id/reddit_username_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/reddit_username_label"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/reddit_username_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+		android:paddingStart="120dp"
+		android:paddingEnd="120dp"
+		android:layout_marginBottom="10dp"
+        android:inputType="textEmailAddress" >
+    </EditText>
+    
+    <Button
+        android:id="@+id/submit_contact_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/pokemon_gold"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/submit_string" />
+    
+</LinearLayout>

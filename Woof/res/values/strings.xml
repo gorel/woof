@@ -4,6 +4,22 @@
     <string name="app_name">Woof</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="woof">Woof</string>
-
+    <string name="woof"><b>Woof!</b></string>
+    <color name="purdue_gold">#b1946c</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <string name="add_new_contact">Add New Contact</string>
+    <string name="woof_message_hint">What\'s on your mind?</string>
+    <string name="choose_contact">Choose contact</string>
+    <string name="send_woof_button_description">Click here to send your Woof!</string>
+    <string name="character_count_initial_text">0 / 280</string>
+    <color name="dark_gray">#212121</color>
+    <color name="pokemon_gold">#cfb53b</color>
+    <string name="notify_default">Send a Woof!</string>
+    <string name="name_label">Name</string>
+    <string name="sms_number_label">Cell Phone Number</string>
+    <string name="email_label">Email</string>
+    <string name="twitter_handle_label">Twitter Handle</string>
+    <string name="reddit_username_label">Reddit Username</string>
+    <string name="submit_string">Submit</string>
 </resources>

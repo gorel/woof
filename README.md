@@ -14,7 +14,7 @@ Woof is the next revolution in social networking and communication.  It is being
 - [ ] Use Fax API
 
 ### Quality of life
-- [ ] Bark on send
+- [x] Bark on send
 - [ ] Contact list
 
 ### Security

@@ -16,5 +16,10 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <!--  Style for Woof main screen -->
+    <style name="woof_main_style">
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
 
 </resources>
