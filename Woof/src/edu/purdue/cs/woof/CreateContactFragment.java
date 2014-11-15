@@ -16,7 +16,6 @@ public class CreateContactFragment extends Fragment {
 	private final int SMS_NUMBER_COLUMN = 2;
 	private final int EMAIL_COLUMN = 3;
 	private final int TWITTER_HANDLE_COLUMN = 4;
-	private final int REDDIT_USERNAME_COLUMN = 5;
 	
 	//Constants
 	private final String DATABASE_NAME = "woof.db";
@@ -37,7 +36,6 @@ public class CreateContactFragment extends Fragment {
 	private EditText smsNumberField;
 	private EditText emailField;
 	private EditText twitterHandleField;
-	private EditText redditUsernameField;
 	private Button submitButton;
 	private Button loadContactButton;
 
@@ -90,7 +88,6 @@ public class CreateContactFragment extends Fragment {
     	 smsNumberField = (EditText) rootView.findViewById(R.id.sms_number_edittext);
     	 emailField = (EditText) rootView.findViewById(R.id.email_edittext);
     	 twitterHandleField = (EditText) rootView.findViewById(R.id.twitter_handle_edittext);
-    	 redditUsernameField = (EditText) rootView.findViewById(R.id.reddit_username_edittext);
     	 submitButton = (Button) rootView.findViewById(R.id.submit_contact_button);
     	 loadContactButton = (Button) rootView.findViewById(R.id.load_contact_button);
     	 
@@ -126,8 +123,7 @@ public class CreateContactFragment extends Fragment {
     	 String smsNumber = smsNumberField.getText().toString().trim();
     	 String email = emailField.getText().toString().trim();
     	 String twitterHandle = twitterHandleField.getText().toString().trim();
-    	 String redditUsername = redditUsernameField.getText().toString().trim();
-    	 Contact contact = new Contact(name, smsNumber, email, twitterHandle, redditUsername);
+    	 Contact contact = new Contact(name, smsNumber, email, twitterHandle, null);
     	 addOrUpdateContact(contact);
     	 parent.setContact(contact);
      }
@@ -166,7 +162,7 @@ public class CreateContactFragment extends Fragment {
  		db.execSQL(createTableMaybe);
  		Cursor cursor = db.rawQuery(
  				"SELECT * FROM " + WOOF_TABLE_NAME +
- 				" WHERE name LIKE '%" + contactName.trim() + "%'",
+ 				" WHERE name LIKE '%" + nameField.getText().toString().trim() + "%'",
  				null);
 		nameField.setText(contactName);
 		smsNumberField.setText(smsNumber);
@@ -177,7 +173,6 @@ public class CreateContactFragment extends Fragment {
  			smsNumberField.setText(cursor.getString(SMS_NUMBER_COLUMN));
  			emailField.setText(cursor.getString(EMAIL_COLUMN));
  			twitterHandleField.setText(cursor.getString(TWITTER_HANDLE_COLUMN));
- 			redditUsernameField.setText(cursor.getString(REDDIT_USERNAME_COLUMN));
  		}
  	}
 }

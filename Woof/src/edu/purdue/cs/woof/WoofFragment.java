@@ -92,17 +92,21 @@ public class WoofFragment extends Fragment {
 					mp.reset();
 					String soundFile;
 					
-					if (quantitySpinner.getSelectedItem().toString().equals("Yip!")) {
+					if (quantitySpinner.getSelectedItem().toString().contains("Yip!")) {
 						count = 1;
 						soundFile = "yip.mp3";
 					}
-					else if (quantitySpinner.getSelectedItem().toString().equals("Bark!")) {
+					else if (quantitySpinner.getSelectedItem().toString().contains("Bark!")) {
 						count = 2;
 						soundFile = "bark.mp3";
 					}
-					else {
+					else if (quantitySpinner.getSelectedItem().toString().contains("Woof!")) {
 						count = 3;
 						soundFile = "woof.mp3";
+					}
+					else {
+						count = 5;
+						soundFile = "howl.mp3";
 					}
 					
 					try {

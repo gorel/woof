@@ -32,15 +32,18 @@
         <item >Woof 1</item>
         <item >Woof 2</item>
         <item >Woof 3</item>
+        <item >Woof 4</item>
     </string-array>
     <string-array name="woof_sounds_value_list">
         <item >1</item>
         <item >2</item>
         <item >3</item>
+        <item >4</item>
     </string-array>
     <string-array name="woof_quantity_list">
-        <item >Yip!</item>
-        <item >Bark!</item>
-        <item >Woof!</item>
+        <item >(1) Yip!</item>
+        <item >(2) Bark!</item>
+        <item >(3) Woof!</item>
+        <item >(5) Howl!</item>
     </string-array>
 </resources>
