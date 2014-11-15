@@ -2,11 +2,9 @@ package edu.purdue.cs.woof;
 
 import java.io.IOException;
 
-import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.*;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -89,22 +87,28 @@ public class WoofFragment extends Fragment {
 			public void onClick(View v) {
 				if (woofText.getText().length() > 0) {
 					int count;
-					if (quantitySpinner.getSelectedItem().toString().equals("Yip!")) {
-						count = 1;
-					}
-					else if (quantitySpinner.getSelectedItem().toString().equals("Bark!")) {
-						count = 2;
-					}
-					else {
-						count = 3;
-					}
 					mp = new MediaPlayer();
 					mp.stop();
 					mp.reset();
+					String soundFile;
+					
+					if (quantitySpinner.getSelectedItem().toString().equals("Yip!")) {
+						count = 1;
+						soundFile = "yip.mp3";
+					}
+					else if (quantitySpinner.getSelectedItem().toString().equals("Bark!")) {
+						count = 2;
+						soundFile = "bark.mp3";
+					}
+					else {
+						count = 3;
+						soundFile = "woof.mp3";
+					}
 					
 					try {
+						/*
 						SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(thisFragment.getActivity());
-						String soundFile = "woof" + sp.getString("woof_sound_option", "1") + ".mp3";
+						*/
 						AssetFileDescriptor afd = getActivity().getAssets().openFd(soundFile);
 			            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
 			            mp.prepare();
