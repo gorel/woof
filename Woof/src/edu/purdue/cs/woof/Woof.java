@@ -2,6 +2,7 @@ package edu.purdue.cs.woof;
 
 import android.support.v7.app.*;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.*;
 
@@ -31,9 +32,11 @@ public class Woof extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-        	Intent intent = new Intent(this, WoofPreferences.class);
-        	startActivity(intent);
-            return true;
+        	//Intent intent = new Intent(this, WoofPreferences.class);
+        	//startActivity(intent);
+        	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=ytc9-wGCHW0"));
+        	startActivity(browserIntent);
+        	return true;
         }
         return super.onOptionsItemSelected(item);
     }

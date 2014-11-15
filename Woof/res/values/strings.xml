@@ -28,6 +28,7 @@
     <string name="woof_button_two_string">Woof 2</string>
     <string name="woof_button_three_string">Woof 3</string>
     <string name="preferences">Preferences</string>
+    <string name="about">About</string>
     <string-array name="woof_sounds_list">
         <item >Woof 1</item>
         <item >Woof 2</item>
