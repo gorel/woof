@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@color/dark_gray"
+    android:layout_height="wrap_content" >
+    
+    <intent
+     android:action="android.intent.action.VIEW"
+     android:targetPackage="edu.purdue.cs.woof"
+     android:targetClass="edu.purdue.cs.woof.WoofPreferences" />
+    
+    <PreferenceCategory>
+    
+	    <ListPreference
+	        android:title="@string/choose_woof_string"
+	        android:key="woof_sound_option"
+	        android:dialogTitle="@string/choose_woof_string"
+	        android:entries="@array/woof_sounds_list"
+	        android:entryValues="@array/woof_sounds_value_list"
+	        android:textColor="@color/white"
+	        android:defaultValue="1" />
+	</PreferenceCategory>
+</PreferenceScreen>

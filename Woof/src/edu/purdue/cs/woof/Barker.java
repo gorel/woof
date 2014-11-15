@@ -50,11 +50,13 @@ public class Barker {
 		this.message = message;
 	}
 	
-	public void bark() {
-		sendSmsMessage();
-		sendEmail();
-		sendTweet();
-		//sendRedditPM();
+	public void bark(int count) {
+		for (int i = 0; i < count; i++) {
+			sendSmsMessage();
+			sendEmail();
+			sendTweet();
+			//sendRedditPM();
+		}
 	}
 	
 	private void sendSmsMessage() {
@@ -71,16 +73,20 @@ public class Barker {
 			(new Thread() {
 				@Override
 				public void run() {
-					Log.i("SendMail", "Sending email to " + contact.getEmail());
-					 try {   
-		                 GmailSender sender = new GmailSender("youhaveawoof@gmail.com", "superwoofbot");
-		                 sender.sendMail("You have a Woof!",   
-		                         message,   
-		                         "You.Have.A.Woof@gmail.com",   
-		                         contact.getEmail());
-		             } catch (Exception e) {   
-		                 Log.e("SendMail", e.getMessage(), e);   
-		             }
+					String[] emails = contact.getEmail().split(",");
+					for (String email : emails) {
+						email = email.trim();
+						Log.i("SendMail", "Sending email to " + email);
+						 try {   
+			                 GmailSender sender = new GmailSender("youhaveawoof@gmail.com", "superwoofbot");
+			                 sender.sendMail("You have a Woof!",   
+			                         message,   
+			                         "You.Have.A.Woof@gmail.com",   
+			                         email);
+			             } catch (Exception e) {   
+			                 Log.e("SendMail", e.getMessage(), e);   
+			             }
+					}
 				}
 			}).start();
 		}

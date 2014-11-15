@@ -18,7 +18,7 @@
     <string name="notify_default">Send a Woof!</string>
     <string name="name_label">Name</string>
     <string name="sms_number_label">Cell Phone Number</string>
-    <string name="email_label">Email</string>
+    <string name="email_label">Email(s) - comma separated</string>
     <string name="twitter_handle_label">Twitter Handle</string>
     <string name="reddit_username_label">Reddit Username</string>
     <string name="submit_string">Submit</string>
@@ -27,4 +27,20 @@
     <string name="woof_button_one_string">Woof 1</string>
     <string name="woof_button_two_string">Woof 2</string>
     <string name="woof_button_three_string">Woof 3</string>
+    <string name="preferences">Preferences</string>
+    <string-array name="woof_sounds_list">
+        <item >Woof 1</item>
+        <item >Woof 2</item>
+        <item >Woof 3</item>
+    </string-array>
+    <string-array name="woof_sounds_value_list">
+        <item >1</item>
+        <item >2</item>
+        <item >3</item>
+    </string-array>
+    <string-array name="woof_quantity_list">
+        <item >Yip!</item>
+        <item >Bark!</item>
+        <item >Woof!</item>
+    </string-array>
 </resources>

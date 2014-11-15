@@ -25,6 +25,7 @@ package edu.purdue.cs.woof;
 import java.security.AccessController;
 import java.security.Provider;
 
+@SuppressWarnings("serial")
 public final class JSSEProvider extends Provider {
 
     public JSSEProvider() {

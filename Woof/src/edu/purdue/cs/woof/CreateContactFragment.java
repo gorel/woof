@@ -1,11 +1,9 @@
 package edu.purdue.cs.woof;
 
 import android.support.v4.app.Fragment;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +21,6 @@ public class CreateContactFragment extends Fragment {
 	//Constants
 	private final String DATABASE_NAME = "woof.db";
 	private final String WOOF_TABLE_NAME = "woof_contact_list";
-	private final int REQUEST_SELECT_CONTACT = 1;
 	private final String createTableMaybe = "CREATE TABLE IF NOT EXISTS " +
 		WOOF_TABLE_NAME + " (" +
 		"id INTEGER PRIMARY KEY AUTOINCREMENT" +
@@ -48,6 +45,7 @@ public class CreateContactFragment extends Fragment {
 	private SQLiteDatabase db;
 	
 	//Contact list results stuff
+	private Contact contact;
 	private String contactName;
 	private String smsNumber;
 	
@@ -61,7 +59,8 @@ public class CreateContactFragment extends Fragment {
 	
 	public CreateContactFragment(WoofFragment parent) {
 		this.parent = parent;
-		contactName = "";
+		this.contact = parent.getContact();
+		contactName = parent.getContact().getName();
 		smsNumber = "";
 	}
 
@@ -76,11 +75,13 @@ public class CreateContactFragment extends Fragment {
     }
     
     public void selectContact() {
+    	/*
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
         if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivityForResult(intent, REQUEST_SELECT_CONTACT);
         }
+        */
         readContact();
     }
      
@@ -92,6 +93,13 @@ public class CreateContactFragment extends Fragment {
     	 redditUsernameField = (EditText) rootView.findViewById(R.id.reddit_username_edittext);
     	 submitButton = (Button) rootView.findViewById(R.id.submit_contact_button);
     	 loadContactButton = (Button) rootView.findViewById(R.id.load_contact_button);
+    	 
+    	 if (contact != null) {
+    		 nameField.setText(contact.getName());
+    		 smsNumberField.setText(contact.getSmsNumber());
+    		 emailField.setText(contact.getEmail());
+    		 twitterHandleField.setText(contact.getTwitterHandle());
+    	 }
      }
      
      private void setActionListeners() {
@@ -158,7 +166,7 @@ public class CreateContactFragment extends Fragment {
  		db.execSQL(createTableMaybe);
  		Cursor cursor = db.rawQuery(
  				"SELECT * FROM " + WOOF_TABLE_NAME +
- 				" WHERE name LIKE '%" + contactName + "%'",
+ 				" WHERE name LIKE '%" + contactName.trim() + "%'",
  				null);
 		nameField.setText(contactName);
 		smsNumberField.setText(smsNumber);

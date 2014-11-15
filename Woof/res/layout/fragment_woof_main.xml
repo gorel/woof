@@ -43,19 +43,37 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/character_count_initial_text"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:textColor="@color/white"
         android:ems="10" >
     </TextView>
-    
-    <Button
-        android:id="@+id/send_woof_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/pokemon_gold"
-        android:text="@string/woof"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:textSize="32sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+id/quantity_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.2" />
+
+        <Button
+            android:id="@+id/send_woof_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/pokemon_gold"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/woof"
+            android:textSize="32sp" />
+    </LinearLayout>
 
 </LinearLayout>
