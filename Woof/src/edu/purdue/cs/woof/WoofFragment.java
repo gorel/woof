@@ -3,12 +3,12 @@ package edu.purdue.cs.woof;
 import java.io.IOException;
 
 import android.content.res.AssetFileDescriptor;
-import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.*;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,26 +19,25 @@ import android.widget.TextView;
 public class WoofFragment extends Fragment {
 	//Constants
 	private final int MAX_TEXT_LENGTH = 250;
-	private final String WOOF_TABLE_NAME = "woof_contact_list";
 	
-	//Contact name
-	private CharSequence contactName;
+	//How to contact them
+	private Contact contact;
+	private Barker barker;
 	
 	//UI Elements
-	View rootView;
-	Button chooseContactButton;
-	Button sendWoofButton;
-	EditText woofText;
-	TextView notifyText;
-	TextView characterCountText;
-	
-	//Database stuff
-	SQLiteDatabase db;
+	private View rootView;
+	private Button chooseContactButton;
+	private Button sendWoofButton;
+	private EditText woofText;
+	private TextView notifyText;
+	private TextView characterCountText;
 	
 	//MediaPlayer stuff
-	MediaPlayer mp;
+	private MediaPlayer mp;
 	
 	public WoofFragment() {
+		contact = new Contact("someone", "", "", "", "");
+		barker = new Barker(contact, "");
 	}
 	
 	@Override
@@ -61,17 +60,14 @@ public class WoofFragment extends Fragment {
 	}
 	 
 	private void setActionListeners() {		
+		final WoofFragment thisFragment = this;
 	    chooseContactButton.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				//TODO: Get selected contact
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.container, new CreateContactFragment());
+				transaction.replace(R.id.container, new CreateContactFragment(thisFragment));
 				transaction.addToBackStack(null);
 				transaction.commit();
-				
-				setContactName("Bob Ross");
-				notifyText.setText("Send a Woof to " + getContactName() + "!");
 			}
 	    });
 	
@@ -96,9 +92,16 @@ public class WoofFragment extends Fragment {
 					catch (IOException e) {
 			            e.printStackTrace();
 			        }
+					
+					//Send the message
+					barker.setContact(contact);
+					barker.setMessage(woofText.getText().toString());
+					barker.bark();
 
 					woofText.setText("");
-					notifyText.setText("Successfully Woof'd " + getContactName() + "!");
+					notifyText.setText("Successfully Woof'd " + contact.getName() + "!  Send another?");
+					
+					Log.i("WOOF", "Sending woof to " + contact.getName() + " with number " + contact.getSmsNumber());
 				}
 			}
 		});
@@ -106,7 +109,7 @@ public class WoofFragment extends Fragment {
 	    woofText.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-				
+				//Intentionally left blank
 			}
 		
 			@Override
@@ -116,50 +119,16 @@ public class WoofFragment extends Fragment {
 		
 			@Override
 			public void afterTextChanged(Editable s) {
-				
+				//Intentionally left blank
 			}
 		});
-	}
-	
-	private CharSequence getContactName() {
-		return contactName;
-	}
-	
-	private void setContactName(String name) {
-		contactName = name;
 	}
 	
 	private void setCharacterCount(int length) {
 		characterCountText.setText(length + " / " + MAX_TEXT_LENGTH);
 	}
 	
-	public void addContact(Contact contact) {
-		db = getActivity().openOrCreateDatabase(
-				"woof.db",
-				SQLiteDatabase.CREATE_IF_NECESSARY,
-				null);
-		final String createTableMaybe = "CREATE TABLE IF NOT EXISTS " +
-				WOOF_TABLE_NAME + " (" +
-				"id INTEGER PRIMARY KEY AUTOINCREMENT" +
-				", name TEXT" +
-				", sms_number TEXT" +
-				", email TEXT" +
-				", twitter_handle TEXT" +
-				", reddit_username TEXT" +
-				");";
-		final String insertIntoTable = "INSERT INTO " + WOOF_TABLE_NAME +
-				" ('name', 'sms_number', 'email', 'twitter_handle', 'reddit_username') " +
-				"VALUES (" +
-				contact.getName() + ", " +
-				contact.getEmail() + ", " +
-				contact.getTwitterHandle() + ", " +
-				contact.getRedditUsername() + ");";
-		
-		db.execSQL(createTableMaybe);
-		db.execSQL(insertIntoTable);
-	}
-	
-	public void updateContact(Contact old, Contact updated) {
-		//TODO: Allow contact updates
+	public void setContact(Contact contact) {
+		this.contact = contact;
 	}
 }

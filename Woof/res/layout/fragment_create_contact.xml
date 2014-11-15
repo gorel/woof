@@ -17,11 +17,11 @@
 
     <EditText
         android:id="@+id/name_edittext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-		android:paddingStart="120dp"
-		android:paddingEnd="120dp"
+		android:layout_marginBottom="5dp"
+		android:gravity="center"
         android:inputType="textPersonName" >
     </EditText>
     
@@ -35,11 +35,11 @@
 
     <EditText
         android:id="@+id/sms_number_edittext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-		android:paddingStart="120dp"
-		android:paddingEnd="120dp"
+		android:layout_marginBottom="5dp"
+		android:gravity="center"
         android:inputType="phone" >
     </EditText>
     
@@ -53,11 +53,11 @@
 
     <EditText
         android:id="@+id/email_edittext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-		android:paddingStart="120dp"
-		android:paddingEnd="120dp"
+		android:layout_marginBottom="5dp"
+		android:gravity="center"
         android:inputType="textEmailAddress" >
     </EditText>
     
@@ -71,11 +71,11 @@
 
     <EditText
         android:id="@+id/twitter_handle_edittext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-		android:paddingStart="120dp"
-		android:paddingEnd="120dp"
+		android:layout_marginBottom="5dp"
+		android:gravity="center"
         android:inputType="textEmailAddress" >
     </EditText>
     
@@ -89,12 +89,11 @@
 
     <EditText
         android:id="@+id/reddit_username_edittext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-		android:paddingStart="120dp"
-		android:paddingEnd="120dp"
 		android:layout_marginBottom="10dp"
+		android:gravity="center"
         android:inputType="textEmailAddress" >
     </EditText>
     

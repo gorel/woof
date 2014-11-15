@@ -28,14 +28,13 @@
     <EditText
         android:id="@+id/woof_message_edittext"
         android:inputType="textCapSentences|textMultiLine"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:maxLength="250"
         android:maxLines="4"
-        android:paddingBottom="100dp"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
+        android:minHeight="160dp"
+        android:gravity="top|start"
         android:hint="@string/woof_message_hint"/>
 
     <TextView
