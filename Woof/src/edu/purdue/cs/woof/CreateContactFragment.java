@@ -159,6 +159,7 @@ public class CreateContactFragment extends Fragment {
 				DATABASE_NAME,
 				SQLiteDatabase.CREATE_IF_NECESSARY,
 				null);
+ 		//db.execSQL("DROP TABLE IF EXISTS " + WOOF_TABLE_NAME);
  		db.execSQL(createTableMaybe);
  		Cursor cursor = db.rawQuery(
  				"SELECT * FROM " + WOOF_TABLE_NAME +
@@ -168,7 +169,7 @@ public class CreateContactFragment extends Fragment {
 		smsNumberField.setText(smsNumber);
 		
  		if (cursor.getCount() > 0) {
- 			cursor.moveToFirst();
+ 			cursor.moveToLast();
  			nameField.setText(cursor.getString(NAME_COLUMN));
  			smsNumberField.setText(cursor.getString(SMS_NUMBER_COLUMN));
  			emailField.setText(cursor.getString(EMAIL_COLUMN));

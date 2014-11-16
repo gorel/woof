@@ -39,7 +39,7 @@ public class WoofFragment extends Fragment {
 	private MediaPlayer mp;
 	
 	public WoofFragment() {
-		contact = new Contact("someone", "", "", "", "");
+		contact = new Contact("", "", "", "", "");
 		barker = new Barker(contact, "");
 	}
 	
